@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum Finder By Aparna</title>
+    <style>
+        *{font-size: 30px; background-color:mintcream; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;}
+        .input{background-color:rgba(217, 254, 236, 0.92);}
+        .input::placeholder {font-size: 15px; color: gray;}
+        .btn{background-color:rgb(37, 77, 63); font-family: serif; color:white; border-radius: 5px;width:100px; margin-left: 20px;}
+        .btn:hover {color:black;background-color: rgb(160, 249, 193);}
+        .clr{ margin-top: 20px;  font-size: 20px; }
+        .clr:hover {color:black;background-color:rgba(217, 254, 236, 0.92);}
+        h1{font-size: 40px; }
+    </style>
+</head>
+<body>
+    <center>
+        <br>
+        <h1>Sequential Series Sum Finder App</h1>
+        <br>
+        <form onsubmit = "find()">
+            <input type="number" placeholder=" Enter  number greater than 1 . . ." id="num" class="input"/>
+            <br>
+            <input type="submit" value="Clear" class="clr" />
+            <br><br>
+            <input type="submit" value="M1" class="btn" />
+            <input type="submit" value="M2" class="btn"/>
+            <input type="submit" value="M3" class="btn"/>
+        </form>
+        <br>
+        <h2 id="msg"></h2>
+        <script>
+                function find()
+                {
+                event.preventDefault();
+                let num = document.getElementById("num");
+                let msg = document.getElementById("msg");
+
+                if(num.value==""){
+                    alert("You did not enter number");
+                    num.focus();
+                    msg.innerHTML="";
+                    return;
+                }
+                
+                let ele = document.activeElement.value;
+                let ans = "";
+                let n = parseFloat(num.value);
+
+                if(n<=0){
+                    alert("Number should be 1 or greater than 1");
+                    num.value="";
+                    num.focus();
+                    msg.innerHTML="";
+                    return;
+                }
+
+                if( ele ==  "Clear")
+                    {
+                        num.value="";
+                        msg.innerHTML="";
+                        alert("clearing...");
+                        num.focus();
+                        return;
+                    }
+                if (ele == "M1"){
+                    let sum=0 ; i=1;
+                    while(i <= n){
+                        sum = sum + i;
+                        i = i + 1;
+                    }
+                    ans = +sum;
+                    msg.innerHTML="M1 --> " +ans;
+                }
+
+                else if( ele == "M2"){
+                    let sum=0 ; i=1;
+                    do{
+                        sum = sum + i;
+                        i = i + 1;
+                    }while(i<=n);
+                    ans = +sum;
+                    msg.innerHTML="M2 --> " +ans;
+                }
+
+                else if( ele == "M3"){
+                    let sum=0 ; 
+                    for(let i=1; i<=n ;i++){
+                        sum = sum + i;
+                    }
+                    ans = +sum;
+                    msg.innerHTML="M3 --> " +ans;
+                }
+            }
+
+         </script>
+    </center>
+</body>
+</html>
